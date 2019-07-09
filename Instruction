@@ -39,8 +39,7 @@ You should see pods that others people are running in the same namespace. Other 
 Ok, now we can run a pod.
 
 To do that, go to deployment dir and run
-./deploy --name my-pod-1 --repo git@github.com:ak3636/sample_project.git ./runner.sh  arg1 arg2 arg3
-./deploy --name my-pod-2 --empty
+./deploy --name my-pod-2 --empty --type no_gpu
 
 !!!! REMINDER !!!!
 Remember to delete pods, when you are done actively using them.
@@ -81,7 +80,7 @@ to see the log
 Logs are also saved here: /VisualComputing/logs
 
 Now we can delete the pod
-kubectl delete pod  my-pod-1
+kubectl delete pod  my-pod-1 --grace-period=0 --force
 
 my-pod-2 is just an empty pod, which will run forever, until we kill it
 However, we can "ssh" into it:
