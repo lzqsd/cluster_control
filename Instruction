@@ -22,7 +22,7 @@ https://nautilus.optiputer.net/
 later and click Services to see all your running pods. 
 A pod is essentially a virtual machine.
 
-Let's use viscomp namespace.
+Let's use mc-lab namespace.
 Send email to a1kuznet@ucsd.edu with your user name to be added to this namespace.
 We set default namespace as 
 kubectl config set-context $(kubectl config current-context) --namespace=viscomp
