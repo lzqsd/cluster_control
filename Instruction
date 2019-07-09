@@ -39,6 +39,7 @@ You should see pods that others people are running in the same namespace. Other 
 Ok, now we can run a pod.
 
 To do that, go to deployment dir and run
+./deploy --name my-pod-1 --repo git@github.com:ak3636/sample_project.git ./runner.sh  arg1 arg2 arg3
 ./deploy --name my-pod-2 --empty --type no_gpu
 
 !!!! REMINDER !!!!
@@ -74,10 +75,6 @@ Remember, never share your private key (id_rsa)!!!
 The pod will automatically mount the your private key when given --key parameter:
 ./deploy --name my-pod-1 --key your-key-name --repo git@github.com:ak3636/sample_project.git ./runner.sh  arg1 arg2 arg3
 
-Run
-kubectl logs my-pod-1
-to see the log 
-Logs are also saved here: /VisualComputing/logs
 
 Now we can delete the pod
 kubectl delete pod  my-pod-1 --grace-period=0 --force
@@ -87,10 +84,9 @@ However, we can "ssh" into it:
 kubectl exec -it my-pod-2 /bin/bash
 Let's run nvidia-smi to see the gpu
 Now let's run:
-cd /VisualComputing/users/
-ls
+cd /experiments
 
-There bunch of users
+There bunch of folders
 Create a directory for yourself
 mkdir your_username
 
@@ -117,7 +113,7 @@ and we can copy from machine back the same way
 kubectl cp  my-pod-2:/VisualComputing/users/me/my_dir my_dir
 
 Let's now delete the pods
-kubectl delete pod  my-pod-2
+kubectl delete pod  my-pod-2 --grace-period=0 --force
 
 
 Remember to delete pods, when you are done actively using them!!!!!
